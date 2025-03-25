@@ -1,5 +1,5 @@
     // Typewriter Effect for Animated Text
-    const text = "Welcome to Codepen - Master Web Animations!";
+    const text = "Welcome to the home of animations!";
     let index = 0;
     
     function typeWriter() {
