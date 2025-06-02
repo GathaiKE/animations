@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circular Cards with Pause Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      background: linear-gradient(to right, #ff9966, #ff5e62);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      color: #e0e0ff;
+    }
+    
+    .cards-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cards {
+      position: relative;
+      list-style: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: 
+        transform 0.4s ease-out,
+        box-shadow 0.4s ease-out,
+        z-index 0.4s ease-out;
+      cursor: pointer;
+      width: 140px;
+      height: 140px;
+      color: #333;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.6));
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .card:hover {
+      transform: scale(1.2);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255,255,255,0.5);
+      z-index: 10;
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover .card-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+    
+    .card-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(to right, #ff5e62, #ff9966);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .center-circle {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      z-index: 5;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    
+    .center-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(to right, #ff9966, #ff5e62);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .instructions {
+      position: absolute;
+      bottom: -60px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      color: #ffcc99;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 204, 153, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 204, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 204, 153, 0); }
+    }
+    
+    @media (max-width: 768px) {
+      .cards-container {
+        height: 400px;
+      }
+      
+      .card {
+        width: 110px;
+        height: 110px;
+        padding: 1rem;
+      }
+      
+      .card-icon {
+        font-size: 2rem;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Circular Cards Animation</h1>
+    <p class="subtitle">Hover over any card to pause the animation</p>
+  </header>
+  
+  <div class="cards-container">
+    <div class="center-circle">
+      <div class="center-text">Pause<br>Animation<br>on Hover</div>
+    </div>
+    <ul class="cards" id="cardsList">
+      <!-- Cards will be generated by JavaScript -->
+    </ul>
+    <div class="instructions">Hover over any card to pause the rotation</div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // DOM elements
+      const cardsList = document.getElementById('cardsList');
+      
+      // Configuration
+      let config = {
+        radius: 250,
+        rotationSpeed: 0.5,
+        itemCount: 8,
+        currentAngle: 0,
+        animationId: null,
+        paused: false
+      };
+      
+      // Sample data for circular cards
+      const cardData = [
+        { icon: '🌞', title: 'Sun' },
+        { icon: '🌍', title: 'Earth' },
+        { icon: '🌕', title: 'Moon' },
+        { icon: '⭐', title: 'Star' },
+        { icon: '🪐', title: 'Saturn' },
+        { icon: '☄️', title: 'Comet' },
+        { icon: '🌌', title: 'Galaxy' },
+        { icon: '🔭', title: 'Telescope' },
+        { icon: '🚀', title: 'Rocket' },
+        { icon: '👨‍🚀', title: 'Astronaut' },
+        { icon: '🛸', title: 'UFO' },
+        { icon: '🌠', title: 'Shooting Star' }
+      ];
+      
+      // Generate cards based on current configuration
+      function generateCards() {
+        cardsList.innerHTML = '';
+        
+        for (let i = 0; i < config.itemCount; i++) {
+          const card = document.createElement('li');
+          card.className = 'card';
+          card.dataset.index = i;
+          
+          const data = cardData[i % cardData.length];
+          card.innerHTML = `
+            <div class="card-icon">${data.icon}</div>
+            <div class="card-title">${data.title}</div>
+          `;
+          
+          // Add pause/resume functionality on hover
+          card.addEventListener('mouseenter', () => {
+            config.paused = true;
+          });
+          
+          card.addEventListener('mouseleave', () => {
+            config.paused = false;
+          });
+          
+          cardsList.appendChild(card);
+        }
+      }
+      
+      // Position cards in a circle using trigonometric calculations
+      function positionCards() {
+        const cards = document.querySelectorAll('.card');
+        const totalCards = cards.length;
+        
+        if (totalCards === 0) return;
+        
+        const anglePerItem = 360 / totalCards;
+        
+        cards.forEach((card, index) => {
+          // Calculate the angle for this card (in degrees)
+          const angle = config.currentAngle + (index * anglePerItem);
+          
+          // Convert to radians for Math functions
+          const radians = angle * (Math.PI / 180);
+          
+          // Calculate position using trigonometry
+          const x = Math.cos(radians) * config.radius;
+          const y = Math.sin(radians) * config.radius;
+          
+          // Apply position with z-index based on angle for proper stacking
+          const zIndex = Math.round(Math.sin(radians) * 5) + 5;
+          
+          // Set the card position
+          card.style.transform = `translate(${x}px, ${y}px)`;
+          card.style.zIndex = zIndex;
+          
+          // Add a subtle color variation based on position
+          const hue = (index * (360 / totalCards)) % 360;
+          const bgColor = `linear-gradient(135deg, hsl(${hue}, 80%, 85%), hsl(${(hue + 60) % 360}, 80%, 90%))`;
+          card.style.background = bgColor;
+        });
+      }
+      
+      // Animation function
+      function animate() {
+        if (!config.paused) {
+          config.currentAngle += config.rotationSpeed;
+          
+          if (config.currentAngle >= 360) {
+            config.currentAngle -= 360;
+          }
+          
+          positionCards();
+        }
+        
+        config.animationId = requestAnimationFrame(animate);
+      }
+      
+      // Initialize the application
+      function init() {
+        generateCards();
+        positionCards();
+        animate();
+      }
+      
+      // Start everything
+      init();
+      
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        positionCards();
+      });
+    });
+  </script>
+</body>
+</html>
