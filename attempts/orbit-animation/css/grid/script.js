@@ -4,42 +4,42 @@ const data = [
         name: 'Myles Lewis Skelly',
         position: 'Left Back',
         bio: 'Master of the dark arts, Starboy and the best young talent in the world.',
-        image: './../images/mls.jpeg'
+        image: './../../images/mls.jpeg'
     },
     {
         id: '2',
         name: 'Bukayo Saka',
         position: 'Right Wing',
         bio: "Best right winger and future ballon d'or",
-        image: './../images/sakabernabeu.jpeg'
+        image: './../../images/sakabernabeu.jpeg'
     },
     {
         id: '3',
         name: 'Declan Rice',
         position: 'Left Central Midfielder',
         bio: 'Engine of the best team in the world. Better than your shin-kicker',
-        image: './../images/ricerma.jpeg'
+        image: './../../images/ricerma.jpeg'
     },
     {
         id: '4',
         name: 'Gabriel Martinelli',
         position: 'Left Wing',
         bio: "Arsenal's magnificent speed star. Dribbles better than you.",
-        image: './../images/martinelli.jpeg'
+        image: './../../images/martinelli.jpeg'
     },
     {
         id: '5',
         name: "William Saliba",
         position: 'Right Center Back',
         bio: "Rolls Royce. Best Center Back in the world.",
-        image: './../images/getupmbappe.jpeg'
+        image: './../../images/getupmbappe.jpeg'
     },
     {
         id: '6',
         name: 'Kylian Mbappe',
         position: "Declan Rice's back pocket.",
         bio: "Best player in Declan Rice's and Saliba's pockets. #Owned",
-        image: './../images/getupmbappe2.jpeg'
+        image: './../../images/getupmbappe2.jpeg'
     }
 
 ]
