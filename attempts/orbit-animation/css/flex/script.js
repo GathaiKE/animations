@@ -27,14 +27,12 @@ const cardData = [
 
 const generateCards=()=>{
     cardsList.innerHTML=''
-
-    for(i=0; i<config.itemCount;i++){
+    
+    cardData.forEach((data, i)=>{
         const card=document.createElement('li')
 
         card.className='card'
         card.dataset.index=i
-
-        const data=cardData[i%cardData.length]
 
         card.innerHTML=`
             <div class="card-icon">${data.icon}</div>
@@ -46,7 +44,7 @@ const generateCards=()=>{
         card.addEventListener('mouseleave', ()=>{config.paused=false})
 
         cardsList.appendChild(card)
-    }
+    })
 }
 
 const positionCards=()=>{
