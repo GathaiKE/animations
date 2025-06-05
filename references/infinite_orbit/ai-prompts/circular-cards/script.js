@@ -73,7 +73,7 @@ function positionCards() {
 
         // Calculate position using trigonometry
         const x = Math.cos(radians) * config.radius;
-        const y = Math.sin(radians) * config.radius;
+        const y = Math.sin(radians) * config.radius*0.5;
 
         // Apply position with z-index based on angle for proper stacking
         const zIndex = Math.round(Math.sin(radians) * 5) + 5;
