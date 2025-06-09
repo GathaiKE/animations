@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into the Techlands</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #00ffff, #00ffaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .bubbles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+            animation: float 3s infinite ease-in-out;
+            user-select: none;
+            z-index: 1;
+        }
+
+        .bubble:hover {
+            transform: scale(1.1);
+            z-index: 100;
+        }
+
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Different bubble sizes */
+        .bubble.small {
+            width: 70px;
+            height: 70px;
+            font-size: 1.5rem;
+        }
+
+        .bubble.medium {
+            width: 90px;
+            height: 90px;
+            font-size: 2rem;
+        }
+
+        .bubble.large {
+            width: 110px;
+            height: 110px;
+            font-size: 2.5rem;
+        }
+
+        /* Tech colors */
+        .angular { background: linear-gradient(135deg, #dd0031, #c3002f); }
+        .react { background: linear-gradient(135deg, #61dafb, #00b3e6); }
+        .vue { background: linear-gradient(135deg, #41b883, #35495e); }
+        .js { background: linear-gradient(135deg, #f0db4f, #d6ba32); }
+        .python { background: linear-gradient(135deg, #306998, #ffd43b); }
+        .node { background: linear-gradient(135deg, #68a063, #3c873a); }
+        .docker { background: linear-gradient(135deg, #2496ed, #0db7ed); }
+        .aws { background: linear-gradient(135deg, #ff9900, #f29100); }
+        .html { background: linear-gradient(135deg, #e34c26, #f06529); }
+        .css { background: linear-gradient(135deg, #264de4, #2965f1); }
+        .git { background: linear-gradient(135deg, #f34f29, #e84d31); }
+        .sass { background: linear-gradient(135deg, #cc6699, #cd6799); }
+        .php { background: linear-gradient(135deg, #777bb3, #8993be); }
+        .java { background: linear-gradient(135deg, #5382a1, #6195bb); }
+        .net { background: linear-gradient(135deg, #512bd4, #68217a); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.7); }
+            100% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 
+                            0 0 60px rgba(0, 200, 255, 0.5); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+            
+            .bubble {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .bubble.small {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .bubble.medium {
+                width: 70px;
+                height: 70px;
+                font-size: 1.7rem;
+            }
+            
+            .bubble.large {
+                width: 85px;
+                height: 85px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-text">
+        <h1>Into The Techlands</h1>
+        <p class="subtitle">Where innovation and technology collide in a dance of endless possibilities</p>
+    </div>
+    
+    <div class="bubbles-container" id="bubblesContainer"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('bubblesContainer');
+            const bubbles = [];
+            const techStack = [
+                { name: 'angular', icon: 'fab fa-angular', size: 'large' },
+                { name: 'react', icon: 'fab fa-react', size: 'large' },
+                { name: 'vue', icon: 'fab fa-vuejs', size: 'medium' },
+                { name: 'js', icon: 'fab fa-js', size: 'large' },
+                { name: 'python', icon: 'fab fa-python', size: 'large' },
+                { name: 'node', icon: 'fab fa-node-js', size: 'medium' },
+                { name: 'docker', icon: 'fab fa-docker', size: 'medium' },
+                { name: 'aws', icon: 'fab fa-aws', size: 'medium' },
+                { name: 'html', icon: 'fab fa-html5', size: 'small' },
+                { name: 'css', icon: 'fab fa-css3-alt', size: 'small' },
+                { name: 'git', icon: 'fab fa-git-alt', size: 'small' },
+                { name: 'sass', icon: 'fab fa-sass', size: 'small' },
+                { name: 'php', icon: 'fab fa-php', size: 'small' },
+                { name: 'java', icon: 'fab fa-java', size: 'medium' },
+                { name: 'net', icon: 'fab fa-microsoft', size: 'large' }
+            ];
+            
+            // Create bubbles
+            techStack.forEach(tech => {
+                const bubble = document.createElement('div');
+                bubble.className = `bubble ${tech.name} ${tech.size}`;
+                
+                const icon = document.createElement('i');
+                icon.className = tech.icon;
+                bubble.appendChild(icon);
+                
+                container.appendChild(bubble);
+                bubbles.push({
+                    element: bubble,
+                    x: Math.random() * (window.innerWidth - 100),
+                    y: Math.random() * (window.innerHeight - 100),
+                    dx: (Math.random() - 0.5) * 4,
+                    dy: (Math.random() - 0.5) * 4,
+                    size: tech.size
+                });
+            });
+            
+            // Animation loop
+            function animate() {
+                bubbles.forEach(bubble => {
+                    // Update position
+                    bubble.x += bubble.dx;
+                    bubble.y += bubble.dy;
+                    
+                    // Get bubble size
+                    let size;
+                    switch(bubble.size) {
+                        case 'small': size = 70; break;
+                        case 'medium': size = 90; break;
+                        case 'large': size = 110; break;
+                        default: size = 90;
+                    }
+                    
+                    // Boundary collision
+                    if (bubble.x <= 0 || bubble.x >= window.innerWidth - size) {
+                        bubble.dx *= -1;
+                        // Adjust position to prevent sticking to edge
+                        bubble.x = bubble.x <= 0 ? 1 : window.innerWidth - size - 1;
+                    }
+                    
+                    if (bubble.y <= 0 || bubble.y >= window.innerHeight - size) {
+                        bubble.dy *= -1;
+                        // Adjust position to prevent sticking to edge
+                        bubble.y = bubble.y <= 0 ? 1 : window.innerHeight - size - 1;
+                    }
+                    
+                    // Apply new position
+                    bubble.element.style.left = `${bubble.x}px`;
+                    bubble.element.style.top = `${bubble.y}px`;
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Start animation
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                bubbles.forEach(bubble => {
+                    // Prevent bubbles from going outside on resize
+                    let size;
+                    switch(bubble.size) {
+                        case 'small': size = 70; break;
+                        case 'medium': size = 90; break;
+                        case 'large': size = 110; break;
+                        default: size = 90;
+                    }
+                    
+                    if (bubble.x > window.innerWidth - size) {
+                        bubble.x = window.innerWidth - size - 5;
+                    }
+                    
+                    if (bubble.y > window.innerHeight - size) {
+                        bubble.y = window.innerHeight - size - 5;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
